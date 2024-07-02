@@ -5,7 +5,9 @@
 package GUI.Tablas;
 
 import Clases.Cliente;
+import GUI.Principal;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 
@@ -18,9 +20,9 @@ import javax.swing.JTable;
 //CLASE GENÉRICA
 public class tablaGenérica<T> {
     
-    public void actualizarTabla(ArrayList<T> lista, String[] columnas, JTable tabla) {
+    public void actualizarTabla(ArrayList<T> lista, String[] columnas, JTable tabla, String contexto) {
         DefaultTableModel modelo = new DefaultTableModel();
-
+        Principal main = Principal.getInstance();
         for (String columna : columnas) {
             modelo.addColumn(columna);
         }
@@ -39,8 +41,8 @@ public class tablaGenérica<T> {
         }
 
         tabla.setModel(modelo);
-        tabla.getColumn("Acciones").setCellRenderer(new buttonRenderer());
-        tabla.getColumn("Acciones").setCellEditor(new buttonEditor(tabla));
+        tabla.getColumn("Acciones").setCellRenderer(new opcRenderer());
+        tabla.getColumn("Acciones").setCellEditor(new opcEditor(tabla,main,contexto));
     }
 
     private Object[] obtenerDatos(T elemento) {
@@ -51,35 +53,4 @@ public class tablaGenérica<T> {
         return new Object[0];
     }
 
-    public void buscar(ArrayList<T> lista, String palabraClave, String[] columnas, JTable tabla) {
-        DefaultTableModel modelo = new DefaultTableModel();
-
-        for (String columna : columnas) {
-            modelo.addColumn(columna);
-        }
-        modelo.addColumn("Acciones");
-
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-
-        for (T elemento : lista) {
-            Object[] datos = obtenerDatos(elemento);
-
-            for (Object dato : datos) {
-                if (dato.toString().contains(palabraClave)) {
-                    Object[] filaConBotones = new Object[datos.length + 1];
-                    System.arraycopy(datos, 0, filaConBotones, 0, datos.length);
-                    filaConBotones[datos.length] = "Acciones"; // Placeholder for buttons
-                    modelo.addRow(filaConBotones);
-                    break; // Evitar agregar el mismo elemento varias veces
-                }
-            }
-        }
-
-        tabla.setModel(modelo);
-
-        tabla.getColumn("Acciones").setCellRenderer(new buttonRenderer());
-        tabla.getColumn("Acciones").setCellEditor(new buttonEditor(tabla));
-    }
 }
