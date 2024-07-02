@@ -26,7 +26,7 @@ public class INICIO extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        main1 = new com.mycompany.proyectobasedatos.Main();
+        main1 = new Clases.Main();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -189,6 +189,6 @@ public class INICIO extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
-    private com.mycompany.proyectobasedatos.Main main1;
+    private Clases.Main main1;
     // End of variables declaration//GEN-END:variables
 }
