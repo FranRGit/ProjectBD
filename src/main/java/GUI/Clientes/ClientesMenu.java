@@ -123,7 +123,7 @@ public class ClientesMenu extends javax.swing.JPanel {
 
         jPanel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 570, 200, 80));
 
-        jPanel21.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel21.setBackground(new java.awt.Color(54, 54, 54));
         jPanel21.setForeground(new java.awt.Color(242, 242, 242));
 
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
